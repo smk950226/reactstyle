@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { injectGlobal } from 'styled-components';
+import styled, { injectGlobal, keyframes } from 'styled-components';
 
 injectGlobal`
   body{
@@ -13,7 +13,7 @@ class App extends Component {
     return (
     <Container>
       <Button>Hello</Button>
-      <Button danger>Hello!!</Button>
+      <Button danger rotationTime={5}>Hello!!</Button>
       <Anchor href="https://www.naver.com/">Go GO GO</Anchor>
     </Container>
     );
@@ -39,10 +39,24 @@ const Button = styled.button`
     outline: none;
   }
   background-color: ${props => props.danger ? "#e74c3c" : "#2ecc71"}
+  ${props => {
+    if(props.danger){
+      return `animation: ${rotation} ${props.rotationTime}s linear infinite;`
+    }
+  }}
 `
 
 const Anchor = Button.withComponent('a').extend`
   text-decoration: none;
 `;
+
+const rotation = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+`
 
 export default App;
