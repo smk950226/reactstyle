@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
+
+injectGlobal`
+  body{
+    padding: 0;
+    margin: 0;
+  }
+`
 
 class App extends Component {
   render() {
@@ -7,6 +14,7 @@ class App extends Component {
     <Container>
       <Button>Hello</Button>
       <Button danger>Hello!!</Button>
+      <Anchor href="https://www.naver.com/">Go GO GO</Anchor>
     </Container>
     );
   }
@@ -32,5 +40,9 @@ const Button = styled.button`
   }
   background-color: ${props => props.danger ? "#e74c3c" : "#2ecc71"}
 `
+
+const Anchor = Button.withComponent('a').extend`
+  text-decoration: none;
+`;
 
 export default App;
