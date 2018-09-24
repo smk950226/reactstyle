@@ -8,6 +8,11 @@
     cursor: pointer;
 }
 
+.button:active,
+.button:focus{
+    outline: none;
+}
+
 .button-success{
     background-color: #2ecc71;
 }
