@@ -1,21 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import styled from 'styled-components';
+
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+`;
+
+const Title = styled.Text`
+  font-weight: 600;
+  font-size: 32px;
+`
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <Container style={styles.container}>
+        <Title>Open up App.js to start working on your app!</Title>
+      </Container>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
