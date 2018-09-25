@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled, { injectGlobal,css } from 'styled-components';
+import styled, { injectGlobal,css, ThemeProvider } from 'styled-components';
+import theme from './theme';
 
 injectGlobal`
   body{
@@ -7,35 +8,34 @@ injectGlobal`
     margin: 0;
   }
 `
-//card를 사용할 떄마다 쓰고싶은 스타일
-const awsomeCard = css`
-  box-shadow: 0 4px 6px rgba(50,50,50,0.11), 0 1px 3px rgba(0,0,0,0.08);
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-`
 
 class App extends Component {
   render() {
     return (
-    <Container>
-      <Input />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Form />
+      </Container>
+    </ThemeProvider>
     );
   }
 }
-
-const Input = styled.input.attrs({
-  required: true
-})`
-  border: none;
-  ${awsomeCard};
-`
 
 const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: #bdc3c7;
 `
+
+const Card = styled.div`
+  background-color: red;
+`
+const Button = styled.button`
+  border-radius: 30px;
+  padding: 25px 15px;
+  background-color: ${props => props.theme.successColor};
+`
+
+const Form = () => (<Card><Button>Hello</Button></Card>)
 
 export default App;
