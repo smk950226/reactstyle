@@ -20,13 +20,16 @@ class App extends Component {
     );
   }
 }
-
+//Container 내부의 모든 Card를 선택하고 싶다면
 const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: #bdc3c7;
+  ${Card}{
+    background-color: blue;
+  }
 `
-
+//${Card}:last-child 등도 가능
 const Card = styled.div`
   background-color: red;
 `
